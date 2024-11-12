@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfvdrnuqdcyi0"]
+
+[ext_resource type="Texture2D" uid="uid://dc5dcc2nk76ad" path="res://Junk/monumento_sprites_prototype_trash.png" id="1_4ywn1"]
+[ext_resource type="Script" path="res://Junk/junk.gd" id="2_n2xf3"]
+
+[node name="junk" type="Sprite2D"]
+texture = ExtResource("1_4ywn1")
+script = ExtResource("2_n2xf3")

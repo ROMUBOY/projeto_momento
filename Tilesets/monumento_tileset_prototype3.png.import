@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://swhc4i25v5hs"
-path="res://.godot/imported/RandomLevelGenTileset.png-7dfecd914f483c4872cbb239693e27d6.ctex"
+uid="uid://dh0ss1yhgy4je"
+path="res://.godot/imported/monumento_tileset_prototype3.png-fa3d6a099aa75c5dec1699058ceab1df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RandomLevelGenTileset.png"
-dest_files=["res://.godot/imported/RandomLevelGenTileset.png-7dfecd914f483c4872cbb239693e27d6.ctex"]
+source_file="res://Tilesets/monumento_tileset_prototype3.png"
+dest_files=["res://.godot/imported/monumento_tileset_prototype3.png-fa3d6a099aa75c5dec1699058ceab1df.ctex"]
 
 [params]
 
