@@ -3,11 +3,19 @@ extends Node2D
 const Player = preload("res://Player/player.tscn")
 const Exit = preload("res://LevelExit/exit.tscn")
 const Junk = preload("res://Junk/junk.tscn")
+
 const tileset_texture = [
 	"res://Tilesets/monumento_tileset_prototype1.png",
 	"res://Tilesets/monumento_tileset_prototype2.png",
 	"res://Tilesets/monumento_tileset_prototype3.png",
 	"res://Tilesets/monumento_tileset_prototype4.png"
+]
+
+const background_tileset_texture = [
+	"res://Tilesets/background/monumento_tileset_prototypebg1.png",
+	"res://Tilesets/background/monumento_tileset_prototypebg2.png",
+	"res://Tilesets/background/monumento_tileset_prototypebg3.png",
+	"res://Tilesets/background/monumento_tileset_prototypebg4.png"
 ]
 
 var current_tileset_texture = 0
@@ -16,6 +24,7 @@ var borders = Rect2(1, 1, 28, 21)
 var player_start_position : Vector2
 
 @onready var tile_map = $TileMap
+@onready var background_tile_map: TileMap = $BackgroundTileMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +35,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_filter"):
 		current_tileset_texture = (current_tileset_texture + 1)%4
 		var texture = load(tileset_texture[current_tileset_texture])
-		$TileMap.tile_set.get_source(1).texture = texture
+		var background_texture = load(background_tileset_texture[current_tileset_texture])
+		tile_map.tile_set.get_source(1).texture = texture
+		background_tile_map.tile_set.get_source(0).texture = background_texture
 
 func generate_level():
 	var walker = Walker.new(Vector2(19, 11), borders)
@@ -48,6 +59,7 @@ func generate_level():
 	for location in map:
 		cells.append(location)
 	tile_map.set_cells_terrain_connect(0, cells, 0, -1)
+	background_tile_map.set_cells_terrain_connect(0, cells, 0, 0)
 	
 	for room in walker.rooms:
 		if randf() < 0.10:
