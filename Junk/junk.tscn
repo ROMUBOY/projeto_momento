@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfvdrnuqdcyi0"]
+[gd_scene load_steps=5 format=3 uid="uid://dfvdrnuqdcyi0"]
 
 [ext_resource type="Texture2D" uid="uid://dc5dcc2nk76ad" path="res://Junk/monumento_sprites_prototype_trash.png" id="1_4ywn1"]
 [ext_resource type="Script" path="res://Junk/junk.gd" id="2_n2xf3"]
+[ext_resource type="PackedScene" uid="uid://b85mci3lcnm8v" path="res://Interaction/Interaction_area/interaction_area.tscn" id="3_tj6xw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6wr4"]
+radius = 15.0
 
 [node name="junk" type="Sprite2D"]
 texture = ExtResource("1_4ywn1")
 script = ExtResource("2_n2xf3")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_tj6xw")]
+action_name = "colect"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_f6wr4")

@@ -6,7 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fi4jx"]
 radius = 6.32456
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_ewlc8")
 metadata/_edit_group_ = true
 
