@@ -3,6 +3,14 @@ extends Node2D
 const Player = preload("res://Player/player.tscn")
 const Exit = preload("res://LevelExit/exit.tscn")
 const Junk = preload("res://Junk/junk.tscn")
+const tileset_texture = [
+	"res://Tilesets/monumento_tileset_prototype1.png",
+	"res://Tilesets/monumento_tileset_prototype2.png",
+	"res://Tilesets/monumento_tileset_prototype3.png",
+	"res://Tilesets/monumento_tileset_prototype4.png"
+]
+
+var current_tileset_texture = 0
 
 var borders = Rect2(1, 1, 28, 21)
 var player_start_position : Vector2
@@ -13,6 +21,12 @@ var player_start_position : Vector2
 func _ready():
 	randomize()
 	generate_level()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("change_filter"):
+		current_tileset_texture = (current_tileset_texture + 1)%4
+		var texture = load(tileset_texture[current_tileset_texture])
+		$TileMap.tile_set.get_source(1).texture = texture
 
 func generate_level():
 	var walker = Walker.new(Vector2(19, 11), borders)
