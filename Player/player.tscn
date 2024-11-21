@@ -9,6 +9,7 @@ radius = 6.32456
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_ewlc8")
+strafe_speed = 500.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

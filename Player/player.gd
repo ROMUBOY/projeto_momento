@@ -48,6 +48,7 @@ extends CharacterBody2D
 @export var acceleration = 600
 @export var friction = 200  # Valor de atrito para desacelerar gradualmente
 @export var rotation_speed = 3.0  # Velocidade de rotação em radianos por segundo
+@export var strafe_speed = 150.0
 
 func _process(delta):
 	# Variável de direção
@@ -66,7 +67,7 @@ func _process(delta):
 	elif Input.is_action_pressed("ui_down"):
 		# Mover para trás na direção oposta
 		direction = -1
-
+	
 	# Atualizar velocidade com base na direção e rotação
 	if direction != 0:
 		# Calcular vetor de movimento na direção apontada pela nave
@@ -75,6 +76,12 @@ func _process(delta):
 	else:
 		# Aplicar atrito quando não houver entrada de movimento
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-
+	
+	# Movimento lateral (strafe)
+	if Input.is_action_pressed("strafe_left"):
+		velocity += Vector2.UP.rotated(rotation) * strafe_speed * delta
+	elif Input.is_action_pressed("strafe_right"):
+		velocity += Vector2.DOWN.rotated(rotation) * strafe_speed * delta
+	
 	# Mover a nave com a função move_and_slide
 	move_and_slide()
