@@ -1,46 +1,3 @@
-#extends CharacterBody2D
-#
-#const SPEED = 300.0
-#
-#func _physics_process(delta):
-	#motion_mode = 1
-	#var input_vector = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
-	#input_vector = input_vector.normalized()
-	#velocity = input_vector * SPEED
-#
-	#move_and_slide()
-# Variáveis de controle da nave
-#extends CharacterBody2D
-#
-## Variáveis de controle da nave
-#@export var max_speed = 400
-#@export var acceleration = 600
-#@export var friction = 200  # Valor de atrito para desacelerar gradualmente
-#
-#func _process(delta):
-	#var direction = Vector2.ZERO
-#
-	## Verificar entrada de movimento
-	#if Input.is_action_pressed("ui_up"):
-		#direction.y -= 1
-	#if Input.is_action_pressed("ui_down"):
-		#direction.y += 1
-	#if Input.is_action_pressed("ui_left"):
-		#direction.x -= 1
-	#if Input.is_action_pressed("ui_right"):
-		#direction.x += 1
-#
-	## Atualizar a velocidade com base na direção
-	#if direction != Vector2.ZERO:
-		#direction = direction.normalized()  # Normalizar para manter velocidade constante
-		#velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
-	#else:
-		## Aplicar o atrito quando não houver entrada
-		#velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-#
-	## Mover a nave com a função move_and_slide
-	#move_and_slide()
-
 extends CharacterBody2D
 
 # Variáveis de controle da nave
@@ -49,6 +6,14 @@ extends CharacterBody2D
 @export var friction = 200  # Valor de atrito para desacelerar gradualmente
 @export var rotation_speed = 3.0  # Velocidade de rotação em radianos por segundo
 @export var strafe_speed = 150.0
+
+var current_health: int
+var damage_multiplier = 0.1  # Ajuste para calibrar o dano
+var collided = false
+
+func _ready() -> void:
+	current_health = PlayerStatus.current_integrity
+	print(current_health)
 
 func _process(delta):
 	# Variável de direção
@@ -85,3 +50,27 @@ func _process(delta):
 	
 	# Mover a nave com a função move_and_slide
 	move_and_slide()
+	
+	detect_collision()
+
+func detect_collision():
+	if get_slide_collision_count() > 0 && !collided:
+		collided = true
+		var impact_velocity = velocity.length()
+		var damage = impact_velocity * damage_multiplier
+		apply_damage(damage)
+	elif get_slide_collision_count() == 0:
+		collided = false
+
+func apply_damage(damage):
+	current_health -= damage
+	print(current_health)
+	if current_health <= 0:
+		explode()
+
+func explode():
+	# Código para destruir a nave ou reiniciar o jogo
+	queue_free()
+
+func get_current_health():
+	return current_health

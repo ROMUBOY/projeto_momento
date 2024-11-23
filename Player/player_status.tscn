@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyd2w5fm1i6kk"]
+
+[ext_resource type="Script" path="res://Player/player_status.gd" id="1_1dx7i"]
+
+[node name="PlayerStatus" type="Node"]
+script = ExtResource("1_1dx7i")
+max_integrity = 50
+max_storage = 8
+max_fuel = 50
+lighting = 1.0
+max_module_capacity = 4
+propulsion_power = 1.0
+filter_efficiency = 1.0
