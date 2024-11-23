@@ -98,7 +98,9 @@ func generate_level():
 			fake_background_tile_map.set_cells_terrain_connect(0, cells, 0, -1)
 
 func reload_level():
-	get_tree().get_root().get_node("World" +"/"+ "Player").queue_free()
+	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
+	PlayerStatus.current_integrity = player.get_current_health()
+	player.queue_free()
 	$CanvasLayer.show()
 
 func _on_new_area_button_pressed() -> void:
