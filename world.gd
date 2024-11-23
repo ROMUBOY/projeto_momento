@@ -89,13 +89,14 @@ func generate_level():
 			var junk = Junk.instantiate()
 			add_child(junk)
 			junk.position = room.position * 32
-		if randf() < 0.35:
-			cells = []
-			for y in range(-room.size.y/2, room.size.y/2) :
-				for x in range( -room.size.x/2, room.size.x/2):
-					cells.append(Vector2(room.position.x + x, room.position.y + y))
-			fake_tile_map.set_cells_terrain_connect(0, cells, 0, 0)
-			fake_background_tile_map.set_cells_terrain_connect(0, cells, 0, -1)
+			if randf() < 0.75:
+				cells = []
+				for y in range(-room.size.y/2, room.size.y/2) :
+					for x in range( -room.size.x/2, room.size.x/2):
+						cells.append(Vector2(room.position.x + x, room.position.y + y))
+				fake_tile_map.set_cells_terrain_connect(0, cells, 0, 0)
+				fake_background_tile_map.set_cells_terrain_connect(0, cells, 0, -1)
+		
 
 func reload_level():
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
