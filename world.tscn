@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch8n1bxtp7gh0"]
+[gd_scene load_steps=18 format=3 uid="uid://ch8n1bxtp7gh0"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_e7s3x"]
 [ext_resource type="Texture2D" uid="uid://swhc4i25v5hs" path="res://Tilesets/RandomLevelGenTileset.png" id="1_ue8aj"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bt1ikcjqq14rr" path="res://Tilesets/background/monumento_tileset_prototypebg1.png" id="4_ggbs7"]
 [ext_resource type="Shader" path="res://Shaders/lightning.gdshader" id="5_fllqx"]
 [ext_resource type="Script" path="res://lighting.gd" id="6_nuwgd"]
+[ext_resource type="Texture2D" uid="uid://wnjfwr402rsy" path="res://HUD/monumento_ui_prototype_under.png" id="7_4v4mr"]
+[ext_resource type="Texture2D" uid="uid://bnrt2308hhkiw" path="res://HUD/monumento_ui_prototype_bar.png" id="8_0n8ga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o21xi"]
 texture = ExtResource("1_ue8aj")
@@ -1277,6 +1279,13 @@ shader_parameter/band_radius = 54.0
 shader_parameter/band_strength = 0.3
 shader_parameter/range_of_light = 64.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fa2nv"]
+texture = ExtResource("7_4v4mr")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_e7s3x")
 
@@ -1355,6 +1364,103 @@ offset_top = 146.0
 offset_right = 475.0
 offset_bottom = 177.0
 text = "ReVisitar Área"
+
+[node name="CanvasLayer_HUD" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer_HUD"]
+layout_mode = 3
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_HUD/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 10
+size_flags_vertical = 10
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fa2nv")
+
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="HP1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="HP8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 16)
+layout_mode = 2
+texture = ExtResource("8_0n8ga")
+expand_mode = 1
 
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/Panel/NewAreaButton" to="." method="_on_new_area_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/Panel/RevisitAreaButton" to="." method="_on_revisit_area_button_pressed"]

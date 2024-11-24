@@ -28,6 +28,10 @@ var player_start_position : Vector2
 @onready var fake_tile_map: TileMap = $FakeTileMap
 @onready var fake_background_tile_map: TileMap = $FakeBackgroundTileMap
 @onready var menu_canvas_layer: CanvasLayer = $MenuCanvasLayer
+@onready var health_bar: HBoxContainer = %HealthBar
+@onready var health_bar_bar: Array[TextureRect]=[
+	%HP1, %HP2, %HP3, %HP4, %HP5, %HP6, %HP7, %HP8
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
