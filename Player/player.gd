@@ -10,6 +10,8 @@ extends CharacterBody2D
 var current_health: int
 var damage_multiplier = 0.1  # Ajuste para calibrar o dano
 var collided = false
+var collected_itens = []
+var current_collected_itens_used_space = 0
 
 func _ready() -> void:
 	current_health = PlayerStatus.current_integrity
@@ -75,3 +77,14 @@ func explode():
 
 func get_current_health():
 	return current_health
+
+func add_item_to_collected_itens(item : Junk):
+	if (item.size < PlayerStatus.max_storage - current_collected_itens_used_space ):
+		current_collected_itens_used_space += item.size
+		collected_itens.append(item)
+		return true
+	else:
+		return false
+
+func get_collected_itens():
+	return collected_itens

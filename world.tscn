@@ -1269,10 +1269,13 @@ sources/0 = SubResource("TileSetAtlasSource_7ljj4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8r1n"]
 shader = ExtResource("5_fllqx")
+shader_parameter/modulate_color = Color(0, 0, 0, 1)
+shader_parameter/black_point = Color(0, 0, 0, 0)
 shader_parameter/lights = null
 shader_parameter/number_of_lights = 1
+shader_parameter/band_radius = 54.0
+shader_parameter/band_strength = 0.3
 shader_parameter/range_of_light = 64.0
-shader_parameter/modulate_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_e7s3x")

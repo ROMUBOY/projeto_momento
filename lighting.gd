@@ -9,7 +9,9 @@ func _process(delta: float) -> void:
 	var light_positions = _get_light_positions()
 	material.set_shader_parameter("number_of_lights", light_positions.size())
 	material.set_shader_parameter("lights", light_positions)
-	material.set_shader_parameter("range_of_light", PlayerStatus.lighting)
+	var lighting = PlayerStatus.lighting
+	material.set_shader_parameter("range_of_light", lighting)
+	material.set_shader_parameter("band_radius", lighting - 10)
 
 func _get_light_positions():
 	return get_tree().get_nodes_in_group("light").map(

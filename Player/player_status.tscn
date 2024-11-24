@@ -5,9 +5,9 @@
 [node name="PlayerStatus" type="Node"]
 script = ExtResource("1_1dx7i")
 max_integrity = 50
-max_storage = 8
+max_storage = 5
 max_fuel = 50
-lighting = 128.0
+lighting = 100.0
 max_module_capacity = 4
 propulsion_power = 1.0
 filter_efficiency = 1.0

@@ -101,8 +101,14 @@ func generate_level():
 
 func reload_level():
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
+	
 	PlayerStatus.current_integrity = player.get_current_health()
+	
+	for item in player.get_collected_itens():
+		PlayerStatus.add_item_to_storage(item)
+		
 	player.queue_free()
+	
 	menu_canvas_layer.show()
 
 func _on_new_area_button_pressed() -> void:

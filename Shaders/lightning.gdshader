@@ -1,10 +1,13 @@
 shader_type canvas_item;
 
+uniform vec4 modulate_color : source_color = vec4(0.0);
+uniform vec4 black_point : source_color = vec4(0.0);
 uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
 uniform vec2 lights[100];
 uniform int number_of_lights = 1;
+uniform float band_radius = 54.0;
+uniform float band_strength = 0.3;
 uniform float range_of_light = 64.0;
-uniform vec4 modulate_color : source_color = vec4(0.0);
 
 float distance_to_light(vec2 coords){
 	float dist = 1000.0;
@@ -21,11 +24,21 @@ float distance_to_light(vec2 coords){
 	return dist;
 }
 
+vec4 modulate(vec4 color, float distance_to_light){
+	vec4 modulated = color * modulate_color;
+	
+	if (distance_to_light > range_of_light){
+		return modulated;
+	}
+	
+	if (distance_to_light >= band_radius){
+		return mix(modulated, color, band_strength);
+	}
+	
+	return color;
+}
+
 void fragment() {
 	COLOR = texture(screen_texture, SCREEN_UV);
-	float dist = distance_to_light(FRAGCOORD.xy);
-	
-	if (dist > range_of_light){
-		COLOR = COLOR * modulate_color;
-	}
+	COLOR = modulate(COLOR, distance_to_light(FRAGCOORD.xy));
 }
