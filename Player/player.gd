@@ -70,6 +70,7 @@ func apply_damage(damage):
 
 func explode():
 	# Código para destruir a nave ou reiniciar o jogo
+	PlayerStatus.restart()
 	queue_free()
 
 func get_current_health():

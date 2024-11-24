@@ -20,3 +20,5 @@ texture = ExtResource("2_2v40j")
 shape = SubResource("CircleShape2D_fi4jx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LightSource" type="Marker2D" parent="." groups=["light"]]

@@ -10,4 +10,7 @@ extends Node
 var current_integrity: int
 
 func _ready() -> void:
+	restart()
+
+func restart():
 	current_integrity = max_integrity

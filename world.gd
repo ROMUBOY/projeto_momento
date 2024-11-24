@@ -27,6 +27,7 @@ var player_start_position : Vector2
 @onready var background_tile_map: TileMap = $BackgroundTileMap
 @onready var fake_tile_map: TileMap = $FakeTileMap
 @onready var fake_background_tile_map: TileMap = $FakeBackgroundTileMap
+@onready var menu_canvas_layer: CanvasLayer = $MenuCanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -102,7 +103,7 @@ func reload_level():
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
 	PlayerStatus.current_integrity = player.get_current_health()
 	player.queue_free()
-	$CanvasLayer.show()
+	menu_canvas_layer.show()
 
 func _on_new_area_button_pressed() -> void:
 	get_tree().reload_current_scene()
@@ -111,4 +112,4 @@ func _on_revisit_area_button_pressed() -> void:
 	var player = Player.instantiate()
 	add_child(player)
 	player.position = player_start_position
-	$CanvasLayer.hide()
+	menu_canvas_layer.hide()
