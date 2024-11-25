@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch8n1bxtp7gh0"]
+[gd_scene load_steps=23 format=3 uid="uid://ch8n1bxtp7gh0"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_e7s3x"]
 [ext_resource type="Texture2D" uid="uid://swhc4i25v5hs" path="res://Tilesets/RandomLevelGenTileset.png" id="1_ue8aj"]
@@ -7,7 +7,11 @@
 [ext_resource type="Shader" path="res://Shaders/lightning.gdshader" id="5_fllqx"]
 [ext_resource type="Script" path="res://lighting.gd" id="6_nuwgd"]
 [ext_resource type="Texture2D" uid="uid://wnjfwr402rsy" path="res://HUD/monumento_ui_prototype_under.png" id="7_4v4mr"]
-[ext_resource type="Texture2D" uid="uid://bnrt2308hhkiw" path="res://HUD/monumento_ui_prototype_bar.png" id="8_0n8ga"]
+[ext_resource type="Texture2D" uid="uid://db4ukrg6pacyp" path="res://HUD/monumento_icons_health_prototype.png" id="7_mt57w"]
+[ext_resource type="Texture2D" uid="uid://bnrt2308hhkiw" path="res://HUD/monumento_ui_prototype_barfull_v.png" id="8_0n8ga"]
+[ext_resource type="Texture2D" uid="uid://dgwe4ftxwano1" path="res://HUD/monumento_ui_energy_prototype.png" id="9_wffaq"]
+[ext_resource type="Texture2D" uid="uid://tsb6o44fusnm" path="res://HUD/monumento_icons_energy_prototype.png" id="10_1s76k"]
+[ext_resource type="Texture2D" uid="uid://bndpt04bf06v4" path="res://HUD/monumento_ui_prototype_barfull_h.png" id="10_aok5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o21xi"]
 texture = ExtResource("1_ue8aj")
@@ -1281,10 +1285,17 @@ shader_parameter/range_of_light = 64.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fa2nv"]
 texture = ExtResource("7_4v4mr")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owt87"]
+texture = ExtResource("9_wffaq")
+texture_margin_left = 3.0
+texture_margin_top = 7.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_e7s3x")
@@ -1393,73 +1404,186 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_mt57w")
+stretch_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fa2nv")
 
-[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 2
 
-[node name="HP1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/PanelContainer/HealthBar"]
+[node name="HP8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_right = 3
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("10_1s76k")
+stretch_mode = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_owt87")
+
+[node name="EnergyBar" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Energy1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
+expand_mode = 1
+
+[node name="Energy8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("10_aok5p")
 expand_mode = 1
 
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/Panel/NewAreaButton" to="." method="_on_new_area_button_pressed"]
