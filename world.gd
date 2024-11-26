@@ -32,6 +32,10 @@ var player_start_position : Vector2
 @onready var health_bar_bar: Array[TextureRect]=[
 	%HP1, %HP2, %HP3, %HP4, %HP5, %HP6, %HP7, %HP8
 ]
+@onready var energy_bar: VBoxContainer = %EnergyBar
+@onready var energy_bar_bar: Array[TextureRect]=[
+	%Energy1, %Energy2, %Energy3, %Energy4, %Energy5, %Energy6, %Energy7, %Energy8
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

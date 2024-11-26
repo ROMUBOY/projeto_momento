@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1w74xu1s32q3"
-path="res://.godot/imported/monumento_ui_prototype_barempty.png-82e1fb8791aae45d98cdb82b9ca1cc39.ctex"
+uid="uid://tsb6o44fusnm"
+path="res://.godot/imported/monumento_icons_energy_prototype.png-8071f197311ab6574de1aaf08ced51c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/monumento_ui_prototype_barempty.png"
-dest_files=["res://.godot/imported/monumento_ui_prototype_barempty.png-82e1fb8791aae45d98cdb82b9ca1cc39.ctex"]
+source_file="res://HUD/monumento_icons_energy_prototype.png"
+dest_files=["res://.godot/imported/monumento_icons_energy_prototype.png-8071f197311ab6574de1aaf08ced51c2.ctex"]
 
 [params]
 
