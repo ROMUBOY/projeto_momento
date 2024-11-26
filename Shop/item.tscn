@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgm55dupnb22f"]
+
+[ext_resource type="Script" path="res://Shop/item.gd" id="1_2godc"]
+
+[node name="Item" type="Node"]
+script = ExtResource("1_2godc")
+item_name = "Armor"
+item_description = "Integrity +1"
+item_price = 10
+item_power = 1

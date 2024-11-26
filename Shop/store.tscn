@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6vbdcm28eoip"]
+
+[ext_resource type="Script" path="res://Shop/store.gd" id="1_fit2t"]
+[ext_resource type="PackedScene" uid="uid://b1j6161rdxb1b" path="res://Shop/store_item.tscn" id="2_0aeuk"]
+[ext_resource type="PackedScene" uid="uid://cgm55dupnb22f" path="res://Shop/item.tscn" id="3_dsdjl"]
+
+[node name="Store" type="Control" node_paths=PackedStringArray("store_data")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fit2t")
+store_item = ExtResource("2_0aeuk")
+store_data = [NodePath("Itens/Item"), NodePath("Itens/Item2"), NodePath("Itens/Item3"), NodePath("Itens/Item4"), NodePath("Itens/Item5"), NodePath("Itens/Item6")]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Itens" type="Node" parent="."]
+
+[node name="Item" parent="Itens" instance=ExtResource("3_dsdjl")]
+
+[node name="Item2" parent="Itens" instance=ExtResource("3_dsdjl")]
+item_name = "Luggage Rack"
+item_description = "Storage +2"
+item_type = 1
+item_power = 2
+
+[node name="Item3" parent="Itens" instance=ExtResource("3_dsdjl")]
+item_name = "Battery"
+item_description = "Battery +1"
+item_type = 2
+item_power = 10
+
+[node name="Item4" parent="Itens" instance=ExtResource("3_dsdjl")]
+item_name = "Lantern"
+item_description = "Visibility +1"
+item_type = 3
+item_power = 10
+
+[node name="Item5" parent="Itens" instance=ExtResource("3_dsdjl")]
+item_name = "Propulsur"
+item_description = "Acceleration +1"
+item_type = 5
+
+[node name="Item6" parent="Itens" instance=ExtResource("3_dsdjl")]
+item_name = "Low Charge Scanner"
+item_type = 6
