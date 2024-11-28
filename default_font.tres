@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://djt2saknf4m84"]
+
+[ext_resource type="FontFile" uid="uid://dy25ysi4a1f57" path="res://PixelifySans-VariableFont_wght.ttf" id="1_e2nrn"]
+
+[resource]
+base_font = ExtResource("1_e2nrn")
