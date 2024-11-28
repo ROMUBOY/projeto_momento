@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwyvd8lw5ivkj"]
+
+[ext_resource type="PackedScene" uid="uid://dfvdrnuqdcyi0" path="res://Junk/junk.tscn" id="1_pt6yn"]
+[ext_resource type="Texture2D" uid="uid://3rgmvvlpedtu" path="res://Junk/Sprites/Relics/monumento_sprites_prototype_relic5.png" id="2_kskcx"]
+
+[node name="junk" instance=ExtResource("1_pt6yn")]
+texture = ExtResource("2_kskcx")
+sell_price = 1
+size = 3

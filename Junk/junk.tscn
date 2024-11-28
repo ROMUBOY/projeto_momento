@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b85mci3lcnm8v" path="res://Interaction/Interaction_area/interaction_area.tscn" id="3_tj6xw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6wr4"]
-radius = 15.0
+radius = 33.0
 
 [node name="junk" type="Sprite2D"]
 texture = ExtResource("1_4ywn1")

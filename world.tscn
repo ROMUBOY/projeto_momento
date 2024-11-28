@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ch8n1bxtp7gh0"]
+[gd_scene load_steps=24 format=3 uid="uid://ch8n1bxtp7gh0"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_e7s3x"]
 [ext_resource type="Texture2D" uid="uid://swhc4i25v5hs" path="res://Tilesets/RandomLevelGenTileset.png" id="1_ue8aj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://Shaders/lightning.gdshader" id="5_fllqx"]
 [ext_resource type="Script" path="res://lighting.gd" id="6_nuwgd"]
 [ext_resource type="Texture2D" uid="uid://wnjfwr402rsy" path="res://HUD/monumento_ui_prototype_under.png" id="7_4v4mr"]
+[ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="7_coq6k"]
 [ext_resource type="Texture2D" uid="uid://db4ukrg6pacyp" path="res://HUD/monumento_icons_health_prototype.png" id="7_mt57w"]
 [ext_resource type="Texture2D" uid="uid://bnrt2308hhkiw" path="res://HUD/monumento_ui_prototype_barfull_v.png" id="8_0n8ga"]
 [ext_resource type="Texture2D" uid="uid://dgwe4ftxwano1" path="res://HUD/monumento_ui_energy_prototype.png" id="9_wffaq"]
@@ -1352,29 +1353,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MenuCanvasLayer/StoreScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NewAreaButton" type="Button" parent="MenuCanvasLayer/StoreScreen/Panel"]
+[node name="StoreLoadSceneButton" parent="MenuCanvasLayer/StoreScreen" instance=ExtResource("7_coq6k")]
 layout_mode = 0
+offset_left = 176.0
+offset_top = 144.0
+offset_right = 271.0
+offset_bottom = 175.0
+text = "Go to Store"
+target_level_path = "res://Shop/store.tscn"
+
+[node name="NewAreaButton" type="Button" parent="MenuCanvasLayer/StoreScreen"]
+visible = false
 offset_left = 138.0
 offset_top = 146.0
 offset_right = 280.0
 offset_bottom = 177.0
-text = "Visitar Nova Área"
+text = "Visit New Area"
 
-[node name="RevisitAreaButton" type="Button" parent="MenuCanvasLayer/StoreScreen/Panel"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 146.0
-offset_right = 475.0
-offset_bottom = 177.0
-text = "ReVisitar Área"
+[node name="RevisitAreaButton" type="Button" parent="MenuCanvasLayer/StoreScreen"]
+offset_left = 336.0
+offset_top = 144.0
+offset_right = 478.0
+offset_bottom = 175.0
+text = "Stay Here"
 
 [node name="CanvasLayer_HUD" type="CanvasLayer" parent="."]
 
@@ -1586,5 +1587,6 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[connection signal="pressed" from="MenuCanvasLayer/StoreScreen/Panel/NewAreaButton" to="." method="_on_new_area_button_pressed"]
-[connection signal="pressed" from="MenuCanvasLayer/StoreScreen/Panel/RevisitAreaButton" to="." method="_on_revisit_area_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/StoreScreen/StoreLoadSceneButton" to="." method="_on_store_load_scene_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/StoreScreen/NewAreaButton" to="." method="_on_new_area_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/StoreScreen/RevisitAreaButton" to="." method="_on_revisit_area_button_pressed"]

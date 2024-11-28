@@ -13,6 +13,8 @@ var collided = false
 var collected_itens = []
 var current_collected_itens_used_space = 0
 
+signal player_died
+
 func _ready() -> void:
 	current_health = PlayerStatus.current_integrity
 	print(current_health)
@@ -73,7 +75,8 @@ func apply_damage(damage):
 func explode():
 	# Código para destruir a nave ou reiniciar o jogo
 	PlayerStatus.restart()
-	queue_free()
+	collected_itens = []
+	emit_signal("player_died")	
 
 func get_current_health():
 	return current_health

@@ -4,19 +4,25 @@
 [ext_resource type="Script" path="res://Shop/store_item.gd" id="1_hf3ca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_treso"]
-bg_color = Color(0.400698, 0.400698, 0.400698, 1)
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 
 [node name="StoreItem" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_treso")
 script = ExtResource("1_hf3ca")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -31,10 +37,6 @@ stretch_mode = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -42,8 +44,10 @@ theme_override_constants/separation = 5
 alignment = 1
 
 [node name="Heading1" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.96202, 0.259813, 0.690411, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0.917105, 0.408046, 1)
@@ -58,13 +62,20 @@ text = "Heading 2"
 autowrap_mode = 2
 
 [node name="Buffer" type="Control" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="PriceLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 text = "Buy"
 
-[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

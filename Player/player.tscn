@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwrkyftqj1673"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ewlc8"]
-[ext_resource type="Texture2D" uid="uid://c086qcrxpqbr3" path="res://Player/monumento_sprites_prototype_ship.png" id="2_2v40j"]
+[ext_resource type="Texture2D" uid="uid://do4x181mo3sup" path="res://Player/monumento_sprites_prototype_ship2.0.png" id="2_i88nx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fi4jx"]
-radius = 6.32456
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojp31"]
+radius = 8.0
+height = 32.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -14,10 +15,12 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.57079
-texture = ExtResource("2_2v40j")
+texture = ExtResource("2_i88nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fi4jx")
+position = Vector2(-4, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_ojp31")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

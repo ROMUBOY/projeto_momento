@@ -10,6 +10,7 @@ extends Node
 
 var storage : Array
 var current_integrity: int
+var current_money: int = 10
 
 func _ready() -> void:
 	restart()
@@ -24,3 +25,12 @@ func add_item_to_storage(item : Junk):
 func remove_item_from_storage(item : Junk):
 	var index = storage.find(item)
 	storage.remove_at(index)
+
+func add_money(amount : int):
+	current_money += amount
+
+func spend_money(amount : int):
+	current_money -= amount
+
+func get_current_money():
+	return current_money
