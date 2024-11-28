@@ -1359,11 +1359,12 @@ offset_left = 176.0
 offset_top = 144.0
 offset_right = 271.0
 offset_bottom = 175.0
-text = "Go to Store"
-target_level_path = "res://Shop/store.tscn"
+text = "Go Away"
+target_level_path = "res://Shop/itens_collected.tscn"
 
 [node name="NewAreaButton" type="Button" parent="MenuCanvasLayer/StoreScreen"]
 visible = false
+layout_mode = 0
 offset_left = 138.0
 offset_top = 146.0
 offset_right = 280.0
@@ -1371,6 +1372,7 @@ offset_bottom = 177.0
 text = "Visit New Area"
 
 [node name="RevisitAreaButton" type="Button" parent="MenuCanvasLayer/StoreScreen"]
+layout_mode = 0
 offset_left = 336.0
 offset_top = 144.0
 offset_right = 478.0

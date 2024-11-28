@@ -19,12 +19,18 @@ func restart():
 	current_integrity = max_integrity
 	storage = []
 
-func add_item_to_storage(item : Junk):
+func add_item_to_storage(item):
 	storage.append(item)
 
-func remove_item_from_storage(item : Junk):
+func remove_item_from_storage(item):
 	var index = storage.find(item)
 	storage.remove_at(index)
+
+func remove_all_itens_from_storage():
+	storage = []
+
+func get_itens_from_storage():
+	return storage
 
 func add_money(amount : int):
 	current_money += amount

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://xp0whl85d5k6"]
+
+[ext_resource type="Script" path="res://Shop/itens_collected.gd" id="1_16yp4"]
+[ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="2_51rlf"]
+[ext_resource type="PackedScene" uid="uid://6iilaq72mfhr" path="res://Shop/item_collected.tscn" id="2_iv4vb"]
+
+[node name="ItensCollected" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_16yp4")
+item_collected = ExtResource("2_iv4vb")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 5
+
+[node name="LoadStoreSceneButton" parent="." instance=ExtResource("2_51rlf")]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 272.0
+offset_right = 242.0
+offset_bottom = 303.0
+text = "Go To Store"
+target_level_path = "res://Shop/store.tscn"
+
+[node name="LoadWorldSceneButton" parent="." instance=ExtResource("2_51rlf")]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 272.0
+offset_right = 514.0
+offset_bottom = 303.0
+text = "Explore New Area"
+target_level_path = "res://world.tscn"

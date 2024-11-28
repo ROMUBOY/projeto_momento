@@ -168,5 +168,12 @@ func _on_revisit_area_button_pressed() -> void:
 
 
 func _on_store_load_scene_button_pressed() -> void:
+	PlayerStatus.remove_all_itens_from_storage()
+	
 	for item in current_collected_itens:
 		PlayerStatus.add_money(item.sell_price)
+		var collected_item = {
+			"texture" : item.texture,
+			"sell_price" : item.sell_price
+		}
+		PlayerStatus.add_item_to_storage(collected_item)
