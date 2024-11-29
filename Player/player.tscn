@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwrkyftqj1673"]
+[gd_scene load_steps=5 format=3 uid="uid://cwrkyftqj1673"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ewlc8"]
 [ext_resource type="Texture2D" uid="uid://do4x181mo3sup" path="res://Player/monumento_sprites_prototype_ship2.0.png" id="2_i88nx"]
+[ext_resource type="AudioStream" uid="uid://dai7k0n8ln3p8" path="res://SoundPlayer/Sounds/engine_heavy_loop.wav" id="3_dgy7h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojp31"]
 radius = 8.0
@@ -25,3 +26,9 @@ shape = SubResource("CapsuleShape2D_ojp31")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="LightSource" type="Marker2D" parent="." groups=["light"]]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dgy7h")
+volume_db = -20.0
+autoplay = true
+bus = &"Sfx"

@@ -9,6 +9,7 @@ var interact: Callable = func():
 
 func _on_body_entered(body: Node2D) -> void:
 	InteractionManager.register_area(self)
+	SoundPlayer.play_sound(SoundPlayer.INTERACTIBLE_SOUND)
 
 
 func _on_body_exited(body: Node2D) -> void:

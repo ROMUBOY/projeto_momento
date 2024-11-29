@@ -87,12 +87,13 @@ func detect_collision():
 
 func apply_damage(damage):
 	current_health -= damage
-	print(current_health)
+	if (damage > 0):
+		SoundPlayer.play_sound(SoundPlayer.HURT_SOUND)
 	if current_health <= 0:
 		explode()
 
 func explode():
-	#PlayerStatus.restart()
+	SoundPlayer.play_sound(SoundPlayer.DIED_SOUND)
 	collected_itens = []
 	get_tree().change_scene_to_file("res://died_screen.tscn")
 	PlayerStatus.current_integrity = PlayerStatus.max_integrity

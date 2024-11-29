@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LoadStoreSceneButton" parent="." instance=ExtResource("1_u806r")]
+layout_mode = 0
 offset_left = 144.0
 offset_top = 272.0
 offset_right = 242.0
@@ -19,6 +20,7 @@ text = "Go To Store"
 target_level_path = "res://Shop/store.tscn"
 
 [node name="LoadWorldSceneButton" parent="." instance=ExtResource("1_u806r")]
+layout_mode = 0
 offset_left = 368.0
 offset_top = 272.0
 offset_right = 514.0

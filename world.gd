@@ -167,6 +167,7 @@ func _on_revisit_area_button_pressed() -> void:
 	player.position = player_start_position
 	player.set_collected_itens(current_collected_itens)
 	menu_canvas_layer.hide()
+	SoundPlayer.play_sound(SoundPlayer.MENU_UNCONFIRM_SOUND)
 
 
 func _on_store_load_scene_button_pressed() -> void:

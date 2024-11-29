@@ -38,7 +38,7 @@ func on_item_buy_pressed(id : int) -> void:
 	var item = store_data[id]
 	
 	if(item.item_price > PlayerStatus.current_money):
-		print("sem grana")
+		SoundPlayer.play_sound(SoundPlayer.MENU_UNCONFIRM_SOUND)
 		return
 	
 	PlayerStatus.spend_money(item.item_price)
@@ -58,6 +58,7 @@ func on_item_buy_pressed(id : int) -> void:
 		type.FILTER_EFFICIENCY:
 			PlayerStatus.filter_efficiency += 1
 		
+	SoundPlayer.play_sound(SoundPlayer.MENU_CONFIRM_SOUND)
 	update_ship_status()
 
 func update_cash_label():
