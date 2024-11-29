@@ -64,6 +64,11 @@ var current_collected_itens = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	
+	initialize_health_bar()
+	
+	initialize_energy_bar()
+	
 	generate_level()
 
 func _process(delta: float) -> void:
@@ -99,6 +104,8 @@ func generate_level():
 	add_child(player)
 	player.position = map.front() * 32
 	player_start_position = player.position
+	player.connect("player_damage", Callable(self, "apply_damage"))
+	player.connect("player_consume_fuel", Callable(self, "consume_energy"))
 	
 	var exit = Exit.instantiate()
 	add_child(exit)
@@ -158,6 +165,20 @@ func reload_level():
 	
 	menu_canvas_layer.show()
 
+func initialize_health_bar():
+	for i in range(health_bar_bar.size()):
+		if (i < PlayerStatus.max_integrity / 10):
+			health_bar_bar[i].show()
+		else:
+			health_bar_bar[i].hide()
+
+func initialize_energy_bar():
+	for i in range(energy_bar_bar.size()):
+		if (i < PlayerStatus.max_integrity / 10):
+			energy_bar_bar[i].show()
+		else:
+			energy_bar_bar[i].hide()
+
 func _on_new_area_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
@@ -169,7 +190,6 @@ func _on_revisit_area_button_pressed() -> void:
 	menu_canvas_layer.hide()
 	SoundPlayer.play_sound(SoundPlayer.MENU_UNCONFIRM_SOUND)
 
-
 func _on_store_load_scene_button_pressed() -> void:
 	PlayerStatus.remove_all_itens_from_storage()
 	
@@ -180,3 +200,19 @@ func _on_store_load_scene_button_pressed() -> void:
 			"sell_price" : item.sell_price
 		}
 		PlayerStatus.add_item_to_storage(collected_item)
+
+func apply_damage():
+	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
+	for i in range(health_bar_bar.size()):
+		if (i <= (player.get_current_health() / 10)):
+			health_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barfull_h.png")
+		else:
+			health_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barempty_h.png")
+
+func consume_energy():
+	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
+	for i in range(energy_bar_bar.size()):
+		if (i <= (player.get_current_fuel() / 10)):
+			energy_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barfull_v.png")
+		else:
+			energy_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barempty_v.png")

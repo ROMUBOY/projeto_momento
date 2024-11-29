@@ -14,11 +14,15 @@ var collected_itens = []
 var current_collected_itens_used_space = 0
 
 var fuel: float = PlayerStatus.max_fuel  # Combustível inicial
-var fuel_burn_rate: float = 5.0  # Taxa de consumo por segundo
+var fuel_burn_rate: float = 3.0  # Taxa de consumo por segundo
 @export var current_filter = 0
 var filter_burn_rate_multiplier = 1 + 1 / PlayerStatus.filter_efficiency
 
 signal player_died
+
+signal player_damage
+
+signal player_consume_fuel
 
 func _ready() -> void:
 	current_health = PlayerStatus.current_integrity
@@ -73,6 +77,7 @@ func process_strafe(delta):
 func burn_fuel(delta):
 	if Input.is_action_pressed("ui_up"):
 		fuel -= fuel_burn_rate * delta * ( filter_burn_rate_multiplier if (current_filter != 0) else 1)
+		emit_signal("player_consume_fuel")
 		fuel = max(fuel, 0)
 		print("Combustível restante: ", fuel)
 
@@ -89,6 +94,7 @@ func apply_damage(damage):
 	current_health -= damage
 	if (damage > 0):
 		SoundPlayer.play_sound(SoundPlayer.HURT_SOUND)
+		emit_signal("player_damage")
 	if current_health <= 0:
 		explode()
 
@@ -100,6 +106,9 @@ func explode():
 
 func get_current_health():
 	return current_health
+
+func get_current_fuel():
+	return fuel
 
 func add_item_to_collected_itens(item : Junk):
 	if (item.size < PlayerStatus.max_storage - current_collected_itens_used_space ):
