@@ -70,6 +70,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_filter"):
 		#current_tileset_texture = (current_tileset_texture + 1)%4
 		current_tileset_texture = (current_tileset_texture + 1)%2
+		var player = get_tree().get_root().get_node("World" +"/"+ "Player")
+		player.current_filter = current_tileset_texture
 		
 		var texture = load(tileset_texture[current_tileset_texture])
 		var background_texture = load(background_tileset_texture[current_tileset_texture])
@@ -97,7 +99,6 @@ func generate_level():
 	add_child(player)
 	player.position = map.front() * 32
 	player_start_position = player.position
-	player.connect("player_died", Callable(self, "reload_level"))
 	
 	var exit = Exit.instantiate()
 	add_child(exit)
@@ -164,6 +165,7 @@ func _on_revisit_area_button_pressed() -> void:
 	var player = Player.instantiate()
 	add_child(player)
 	player.position = player_start_position
+	player.set_collected_itens(current_collected_itens)
 	menu_canvas_layer.hide()
 
 

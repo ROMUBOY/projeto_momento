@@ -5,3 +5,4 @@
 
 [node name="junk" instance=ExtResource("1_wvgdj")]
 texture = ExtResource("2_ojk6p")
+sell_price = 6

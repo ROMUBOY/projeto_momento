@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 # Variáveis de controle da nave
 @export var max_speed = 400
-@export var acceleration = 600
-@export var friction = 200  # Valor de atrito para desacelerar gradualmente
+@export var acceleration = 130
+@export var friction = 100  # Valor de atrito para desacelerar gradualmente
 @export var rotation_speed = 3.0  # Velocidade de rotação em radianos por segundo
-@export var strafe_speed = 150.0
+@export var strafe_speed = 0.00000001
 
 var current_health: int
 var damage_multiplier = 0.1  # Ajuste para calibrar o dano
@@ -13,55 +13,74 @@ var collided = false
 var collected_itens = []
 var current_collected_itens_used_space = 0
 
+var fuel: float = PlayerStatus.max_fuel  # Combustível inicial
+var fuel_burn_rate: float = 5.0  # Taxa de consumo por segundo
+@export var current_filter = 0
+var filter_burn_rate_multiplier = 1 + 1 / PlayerStatus.filter_efficiency
+
 signal player_died
 
 func _ready() -> void:
 	current_health = PlayerStatus.current_integrity
-	print(current_health)
 
 func _process(delta):
-	# Variável de direção
-	var direction = 0
+	if fuel > 0:
+		process_rotation(delta)
+	
+		process_movement(delta)
+		
+		process_strafe(delta)
+		
+		move_and_slide()
+		
+		detect_collision()
+		
+		burn_fuel(delta)
+	else:
+		explode()
 
-	# Controlar rotação da nave
+func process_rotation(delta):	
 	if Input.is_action_pressed("ui_left"):
 		rotation -= rotation_speed * delta
 	elif Input.is_action_pressed("ui_right"):
 		rotation += rotation_speed * delta
 
-	# Controlar movimento para frente e para trás
+func process_movement(delta):
+	var direction = direction()
+		
+	if direction != 0:
+		var forward_vector = Vector2.RIGHT.rotated(rotation) * direction
+		velocity = velocity.move_toward(forward_vector * max_speed, (acceleration + PlayerStatus.propulsion_power * 10 )* delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+
+func direction():
+	var direction = 0
+	
 	if Input.is_action_pressed("ui_up"):
-		# Mover para frente na direção atual da nave
 		direction = 1
 	elif Input.is_action_pressed("ui_down"):
-		# Mover para trás na direção oposta
 		direction = -1
 	
-	# Atualizar velocidade com base na direção e rotação
-	if direction != 0:
-		# Calcular vetor de movimento na direção apontada pela nave
-		var forward_vector = Vector2.RIGHT.rotated(rotation) * direction
-		velocity = velocity.move_toward(forward_vector * max_speed, acceleration * delta)
-	else:
-		# Aplicar atrito quando não houver entrada de movimento
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-	
-	# Movimento lateral (strafe)
+	return direction
+
+func process_strafe(delta):
 	if Input.is_action_pressed("strafe_left"):
 		velocity += Vector2.UP.rotated(rotation) * strafe_speed * delta
 	elif Input.is_action_pressed("strafe_right"):
 		velocity += Vector2.DOWN.rotated(rotation) * strafe_speed * delta
-	
-	# Mover a nave com a função move_and_slide
-	move_and_slide()
-	
-	detect_collision()
+
+func burn_fuel(delta):
+	if Input.is_action_pressed("ui_up"):
+		fuel -= fuel_burn_rate * delta * ( filter_burn_rate_multiplier if (current_filter != 0) else 1)
+		fuel = max(fuel, 0)
+		print("Combustível restante: ", fuel)
 
 func detect_collision():
 	if get_slide_collision_count() > 0 && !collided:
 		collided = true
 		var impact_velocity = velocity.length()
-		var damage = impact_velocity * damage_multiplier
+		var damage = impact_velocity * damage_multiplier if (impact_velocity > 10) else 0
 		apply_damage(damage)
 	elif get_slide_collision_count() == 0:
 		collided = false
@@ -73,10 +92,10 @@ func apply_damage(damage):
 		explode()
 
 func explode():
-	# Código para destruir a nave ou reiniciar o jogo
-	PlayerStatus.restart()
+	#PlayerStatus.restart()
 	collected_itens = []
-	emit_signal("player_died")	
+	get_tree().change_scene_to_file("res://died_screen.tscn")
+	PlayerStatus.current_integrity = PlayerStatus.max_integrity
 
 func get_current_health():
 	return current_health
@@ -91,3 +110,6 @@ func add_item_to_collected_itens(item : Junk):
 
 func get_collected_itens():
 	return collected_itens
+	
+func set_collected_itens(itens):
+	collected_itens = itens

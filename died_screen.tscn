@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt83d5peosj5a"]
+
+[ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="1_u806r"]
+
+[node name="DiedScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadStoreSceneButton" parent="." instance=ExtResource("1_u806r")]
+offset_left = 144.0
+offset_top = 272.0
+offset_right = 242.0
+offset_bottom = 303.0
+text = "Go To Store"
+target_level_path = "res://Shop/store.tscn"
+
+[node name="LoadWorldSceneButton" parent="." instance=ExtResource("1_u806r")]
+offset_left = 368.0
+offset_top = 272.0
+offset_right = 514.0
+offset_bottom = 303.0
+text = "Explore New Area"
+target_level_path = "res://world.tscn"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 641.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 46
+text = "Emergency procedures 
+All items must be left behind"
+horizontal_alignment = 1
