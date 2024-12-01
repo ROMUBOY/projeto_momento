@@ -227,6 +227,8 @@ func apply_damage():
 			health_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barempty_h.png")
 
 func consume_energy():
+	if(get_tree() == null):
+		return
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
 	for i in range(energy_bar_bar.size()):
 		if (i <= (player.get_current_fuel() / 10)):
@@ -235,5 +237,7 @@ func consume_energy():
 			energy_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barempty_v.png")
 
 func update_cargo_hud():
+	if(get_tree() == null):
+		return
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
 	cargo_label.text = "Cargo: " + str(player.get_current_collected_itens_used_space()) + "/" + str(PlayerStatus.max_storage)

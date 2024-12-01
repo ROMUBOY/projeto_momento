@@ -20,6 +20,20 @@ grow_vertical = 2
 scale = Vector2(0.73, 0.73)
 script = ExtResource("2_e8st6")
 
+[node name="BG" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1109.25
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bbumr")
+expand_mode = 3
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 11
@@ -59,7 +73,7 @@ theme = ExtResource("3_xxbmf")
 text = "NEW GAME"
 target_level_path = "res://world.tscn"
 
-[node name="Settings2" type="Button" parent="PanelContainer/Main Menu/VBoxContainer/VBoxContainer"]
+[node name="HowToPlay" type="Button" parent="PanelContainer/Main Menu/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -138,7 +152,7 @@ text = "SFX VOLUME"
 [node name="HSlider" type="HSlider" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Back" type="Button" parent="PanelContainer/Settings/VBoxContainer"]
+[node name="SettingsBack" type="Button" parent="PanelContainer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -193,7 +207,7 @@ Art: [url={https://jojuticaba.itch.io/}]@jojuticaba[/url] and [url={https://expl
 [url]https://opengameart.org/content/engine-loop-heavy-vehicletank[/url]
 [url]https://opengameart.org/content/3-background-crash-explosion-bang-sounds[/url]"
 
-[node name="Back" type="Button" parent="PanelContainer/Credits/VBoxContainer"]
+[node name="CreditsBack" type="Button" parent="PanelContainer/Credits/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -247,7 +261,7 @@ size_flags_vertical = 10
 theme = ExtResource("3_xxbmf")
 text = "NEXT"
 
-[node name="Back" type="Button" parent="PanelContainer/How to Play/VBoxContainer"]
+[node name="HowToPlayBack" type="Button" parent="PanelContainer/How to Play/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -255,15 +269,10 @@ size_flags_vertical = 10
 theme = ExtResource("3_xxbmf")
 text = "BACK"
 
-[node name="BG" type="TextureRect" parent="."]
-z_index = -1
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1109.25
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("3_bbumr")
-expand_mode = 3
+[connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="PanelContainer/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="PanelContainer/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="PanelContainer/How to Play/VBoxContainer/HowToPlayBack" to="." method="_on_how_to_play_back_pressed"]
