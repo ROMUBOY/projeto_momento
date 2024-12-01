@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 
 @onready var texture_rect: TextureRect = $MarginContainer/HBoxContainer/TextureRect
 @onready var cash_label: Label = $MarginContainer/HBoxContainer/CashLabel
