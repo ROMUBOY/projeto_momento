@@ -33,19 +33,31 @@ size_flags_vertical = 3
 theme_override_constants/separation = 15
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 225)
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = true
-text = "Aaa"
-
-[node name="Next" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
 theme = ExtResource("1_mfx65")
-text = "NEXT"
+bbcode_enabled = true
+text = "[center]In Monument, you take control of a scavenger ship, the Grub, exploring an impossibly huge alien construct which once housed a civilization of unknown origins.
+[img={100}x{100}]res://Player/monumento_sprites_prototype_ship2.0.png[/img]
+You access the structure through different entry points, each exploration taking you to a different area of the deserted arcology. Collect the remains of the previous inhabitants, and sell them to upgrade your vehicle.
+
+[b]CONTROLS[/b]
+Press W to activate the back thrusters and move forward
+Press S to activate the front thrusters and move backwards
+Press A and D to turn the ship left and right, respectively
+Press Q and E to activate the lateral thrusters, moving sideways
+Press F to interact in the field, and to collect found objects of interests,
+Press Space to turn on the Scan Visor, allowing to uncover hidden pathways
+
+[b]INTEGRITY, ENERGY AND CARGO[/b]
+Your ship has both an Integrity gauge and an Energy gauge on the top right corner of the screen.
+
+Integrity measures its physical condition, and is depleted by hitting obstacles like walls.
+Energy measures its fuel reserves, and is depleted by movement and maintaining the Scan Visor turned on.
+If either your gauges go to zero, you are unable to continue exploring, and will leave behind all objects you've collected in your trip.
+
+You also have a maximum cargo you can carry, shown at the bottom left of your HUD. Every object you collect has a different weight and value."
 
 [node name="HowToPlayBack" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)

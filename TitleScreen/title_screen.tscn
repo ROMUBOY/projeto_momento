@@ -48,6 +48,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3rrd0")
 
 [node name="Main Menu" type="MarginContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -108,7 +109,6 @@ text = "CREDITS"
 layout_mode = 2
 
 [node name="Credits" type="MarginContainer" parent="PanelContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -136,6 +136,7 @@ text = "CREDITS"
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Credits/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_xxbmf")
 theme_override_constants/separation = 15
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Credits/VBoxContainer/VBoxContainer"]
@@ -152,7 +153,9 @@ Art: [url={https://jojuticaba.itch.io/}]@jojuticaba[/url] and [url={https://expl
 [url]https://opengameart.org/content/gui-sound-effects[/url]
 [url]https://opengameart.org/content/machine-shutting-down[/url]
 [url]https://opengameart.org/content/engine-loop-heavy-vehicletank[/url]
-[url]https://opengameart.org/content/3-background-crash-explosion-bang-sounds[/url]"
+[url]https://opengameart.org/content/3-background-crash-explosion-bang-sounds[/url]
+[b]Music:[/b]
+[url]https://opengameart.org/content/another-space-background-track[/url]"
 
 [node name="CreditsBack" type="Button" parent="PanelContainer/Credits/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
