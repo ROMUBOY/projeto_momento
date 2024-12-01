@@ -48,7 +48,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3rrd0")
 
 [node name="Main Menu" type="MarginContainer" parent="PanelContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -109,6 +108,7 @@ text = "CREDITS"
 layout_mode = 2
 
 [node name="Credits" type="MarginContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -172,4 +172,9 @@ layout_mode = 2
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="PanelContainer/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
 [connection signal="pressed" from="PanelContainer/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="PanelContainer/How to Play/VBoxContainer/HowToPlayBack" to="." method="_on_how_to_play_back_pressed"]
+
+[editable path="PanelContainer/Settings"]
+[editable path="PanelContainer/How to Play"]
