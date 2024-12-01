@@ -43,21 +43,27 @@ text = "[center]In Monument, you take control of a scavenger ship, the Grub, exp
 You access the structure through different entry points, each exploration taking you to a different area of the deserted arcology. Collect the remains of the previous inhabitants, and sell them to upgrade your vehicle.
 
 [b]CONTROLS[/b]
-Press W to activate the back thrusters and move forward
-Press S to activate the front thrusters and move backwards
-Press A and D to turn the ship left and right, respectively
-Press Q and E to activate the lateral thrusters, moving sideways
-Press F to interact in the field, and to collect found objects of interests,
-Press Space to turn on the Scan Visor, allowing to uncover hidden pathways
+[b]W[/b] - activate the back thrusters and move forward
+[b]S[/b] - to activate the front thrusters and move backwards
+[b]A and D[/b] - turn the ship left and right, respectively
+[b]Q and E[/b] - activate the lateral thrusters, moving sideways
+[b]F[/b] - interact in the field, and to collect found objects of interests,
+[b]Space[/b] - turn on the Scan Visor, allowing to uncover hidden pathways
 
-[b]INTEGRITY, ENERGY AND CARGO[/b]
-Your ship has both an Integrity gauge and an Energy gauge on the top right corner of the screen.
-
+[b]INTEGRITY AND ENERGY[/b]
+Your ship has both an [b]Integrity[/b] gauge and an [b]Energy[/b] gauge on the top right corner of the screen.
+[img={80}x{100}]res://TitleScreen/hp_tut.png[/img]
 Integrity measures its physical condition, and is depleted by hitting obstacles like walls.
-Energy measures its fuel reserves, and is depleted by movement and maintaining the Scan Visor turned on.
+
+Energy measures its fuel reserves, and is depleted by movement and maintaining the [b]Scan Visor[/b] turned on.
+
 If either your gauges go to zero, you are unable to continue exploring, and will leave behind all objects you've collected in your trip.
 
-You also have a maximum cargo you can carry, shown at the bottom left of your HUD. Every object you collect has a different weight and value."
+[b]CARGO[/b]
+[img={100}x{40}]res://TitleScreen/cargo_tut.png[/img]
+You also have a maximum amount of [b]cargo[/b] you can carry, shown at the bottom left of your HUD. 
+
+Every object you collect has a different weight and value, and you need to choose correctly what to bring home."
 
 [node name="HowToPlayBack" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
