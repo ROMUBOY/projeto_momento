@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var friction = 100  # Valor de atrito para desacelerar gradualmente
 @export var rotation_speed = 3.0  # Velocidade de rotação em radianos por segundo
 @export var strafe_speed = 0.00000001
+@export var knockback_multiplier: float = 1.0
 
 var current_health: int
 var damage_multiplier = 0.1  # Ajuste para calibrar o dano
@@ -37,9 +38,9 @@ func _process(delta):
 		
 		process_strafe(delta)
 		
-		move_and_slide()
+		var collision = move_and_slide()
 		
-		detect_collision()
+		detect_collision(collision)
 		
 		burn_fuel(delta)
 	else:
@@ -83,11 +84,12 @@ func burn_fuel(delta):
 		fuel = max(fuel, 0)
 		print("Combustível restante: ", fuel)
 
-func detect_collision():
+func detect_collision(collision):
 	if get_slide_collision_count() > 0 && !collided:
 		collided = true
 		var impact_velocity = velocity.length()
 		var damage = impact_velocity * damage_multiplier if (impact_velocity > 10) else 0
+		apply_knockback(get_slide_collision(0).get_normal())
 		apply_damage(damage)
 	elif get_slide_collision_count() == 0:
 		collided = false
@@ -105,6 +107,10 @@ func explode():
 	collected_itens = []
 	get_tree().change_scene_to_file("res://died_screen.tscn")
 	PlayerStatus.current_integrity = PlayerStatus.max_integrity
+
+func apply_knockback(normal: Vector2):
+	var knockback_strength = velocity.length() * knockback_multiplier
+	velocity += normal * knockback_strength
 
 func get_current_health():
 	return current_health
