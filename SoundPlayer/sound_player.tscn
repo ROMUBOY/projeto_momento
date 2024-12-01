@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds23mqq7dmjrw"]
+[gd_scene load_steps=3 format=3 uid="uid://ds23mqq7dmjrw"]
 
 [ext_resource type="Script" path="res://SoundPlayer/sound_player.gd" id="1_a0h5d"]
+[ext_resource type="AudioStream" uid="uid://bbf2vvlkk1hfy" path="res://SoundPlayer/Sounds/ObservingTheStar.ogg" id="2_5te4q"]
 
 [node name="SoundPlayer" type="Node"]
 script = ExtResource("1_a0h5d")
@@ -36,3 +37,8 @@ bus = &"Sfx"
 
 [node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 bus = &"Sfx"
+
+[node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5te4q")
+autoplay = true
+bus = &"Music"
