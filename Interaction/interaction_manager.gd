@@ -1,7 +1,8 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var label: Label = $CanvasLayer/Label
+@onready var label: Label = $CanvasLayer/PanelContainer/Label
+@onready var panel_container: PanelContainer = $CanvasLayer/PanelContainer
 
 const base_text = "Press [F] to "
 
@@ -34,9 +35,9 @@ func _process(delta: float) -> void:
 		#label.position = local_position
 		#label.global_position.y -= 36
 		#label.global_position.x -= label.size.x / 2
-		label.show()
+		panel_container.show()
 	else:
-		label.hide()
+		panel_container.hide()
 
 func _sort_by_distance_to_player(area1, area2):
 	if player == null:
@@ -50,7 +51,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && can_interact:
 		if active_areas.size() > 0:
 			can_interact = false
-			label.hide()
+			panel_container.hide()
 			
 			await active_areas[0].interact.call()
 			

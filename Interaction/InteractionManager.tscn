@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://qqud5rtytxmv"]
+[gd_scene load_steps=4 format=3 uid="uid://qqud5rtytxmv"]
 
 [ext_resource type="Script" path="res://Interaction/interaction_manager.gd" id="1_m2k37"]
+[ext_resource type="Texture2D" uid="uid://wnjfwr402rsy" path="res://HUD/monumento_ui_prototype_under.png" id="2_y5efa"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4jv2"]
+texture = ExtResource("2_y5efa")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="InteractionManager" type="Node2D"]
 z_index = 21
@@ -9,18 +21,27 @@ script = ExtResource("1_m2k37")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-z_index = 21
-z_as_relative = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -36.0
-offset_bottom = -36.0
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -132.0
+offset_right = 82.0
+offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_j4jv2")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer"]
+z_index = 21
+z_as_relative = false
+layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_font_sizes/font_size = 12
 text = "PRESS [ACTION] TO INTERACT"
 horizontal_alignment = 1
 vertical_alignment = 1
