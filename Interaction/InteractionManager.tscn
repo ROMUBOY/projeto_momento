@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Interaction/interaction_manager.gd" id="1_m2k37"]
 
 [node name="InteractionManager" type="Node2D"]
+z_index = 21
 script = ExtResource("1_m2k37")
 
 [node name="Label" type="Label" parent="."]
-z_index = 20
+z_index = 21
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

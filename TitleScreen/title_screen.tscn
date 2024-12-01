@@ -1,8 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi2uyqxfucyeu"]
+[gd_scene load_steps=4 format=3 uid="uid://bi2uyqxfucyeu"]
 
-[ext_resource type="Texture2D" uid="uid://jlb2s7i4uejl" path="res://TitleScreen/grub_ilus_3.png" id="1_6bj55"]
+[ext_resource type="Texture2D" uid="uid://b1b1ghdix2udg" path="res://TitleScreen/VEL0bU.png" id="1_di44x"]
+[ext_resource type="Script" path="res://TitleScreen/title_screen.gd" id="2_e8st6"]
+[ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="3_wy32p"]
 
 [node name="TitleScreen" type="Sprite2D"]
-position = Vector2(320, 160)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_6bj55")
+position = Vector2(320, 180)
+scale = Vector2(0.73, 0.73)
+texture = ExtResource("1_di44x")
+script = ExtResource("2_e8st6")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 60.0
+offset_bottom = -137.0
+theme_override_font_sizes/font_size = 62
+text = "MONUMENT"
+
+[node name="NewGameLoadSceneButton" parent="." instance=ExtResource("3_wy32p")]
+offset_left = -219.178
+offset_top = -202.74
+offset_right = -136.178
+offset_bottom = -174.74
+scale = Vector2(1.435, 1.435)
+text = "NEW GAME"
+target_level_path = "res://world.tscn"
+
+[node name="SettingsLoadSceneButton2" parent="." instance=ExtResource("3_wy32p")]
+offset_left = -219.178
+offset_top = -136.986
+offset_right = -139.178
+offset_bottom = -108.986
+scale = Vector2(1.435, 1.435)
+text = "SETTINGS
+"
