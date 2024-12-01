@@ -8,7 +8,7 @@ class_name Junk
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_collect")
-	interaction_area.action_name += "\nSize: " + str(size) + "; Sell Price: " + str(sell_price)
+	interaction_area.action_name += "\nSize: " + str(size) + " / Sell Price: " + str(sell_price)
 
 func _collect():
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")

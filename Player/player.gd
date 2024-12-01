@@ -24,6 +24,8 @@ signal player_damage
 
 signal player_consume_fuel
 
+signal player_got_item
+
 func _ready() -> void:
 	current_health = PlayerStatus.current_integrity
 
@@ -114,6 +116,7 @@ func add_item_to_collected_itens(item : Junk):
 	if (item.size < PlayerStatus.max_storage - current_collected_itens_used_space ):
 		current_collected_itens_used_space += item.size
 		collected_itens.append(item)
+		emit_signal("player_got_item")
 		return true
 	else:
 		return false
@@ -123,3 +126,6 @@ func get_collected_itens():
 	
 func set_collected_itens(itens):
 	collected_itens = itens
+
+func get_current_collected_itens_used_space():
+	return current_collected_itens_used_space

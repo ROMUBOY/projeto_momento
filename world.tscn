@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ch8n1bxtp7gh0"]
+[gd_scene load_steps=26 format=3 uid="uid://ch8n1bxtp7gh0"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_e7s3x"]
 [ext_resource type="Texture2D" uid="uid://swhc4i25v5hs" path="res://Tilesets/RandomLevelGenTileset.png" id="1_ue8aj"]
@@ -1299,6 +1299,17 @@ texture_margin_top = 7.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7evqx"]
+texture = ExtResource("7_4v4mr")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_e7s3x")
 
@@ -1607,6 +1618,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7evqx")
+
+[node name="CargoLabel" type="Label" parent="CanvasLayer_HUD/PanelContainer"]
+layout_mode = 2
+text = "Cargo: 0/10"
 
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/HBoxContainer/NewAreaButton" to="." method="_on_new_area_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/HBoxContainer/StoreLoadSceneButton" to="." method="_on_store_load_scene_button_pressed"]

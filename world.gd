@@ -58,6 +58,7 @@ var exit_position : Vector2
 @onready var energy_bar_bar: Array[TextureRect]=[
 	%Energy1, %Energy2, %Energy3, %Energy4, %Energy5, %Energy6, %Energy7, %Energy8
 ]
+@onready var cargo_label: Label = $CanvasLayer_HUD/PanelContainer/CargoLabel
 
 var current_collected_itens = []
 
@@ -70,6 +71,8 @@ func _ready():
 	initialize_energy_bar()
 	
 	generate_level()
+	
+	cargo_label.text = "Cargo: 0/" + str(PlayerStatus.max_storage)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_filter"):
@@ -106,6 +109,7 @@ func generate_level():
 	player_start_position = player.position
 	player.connect("player_damage", Callable(self, "apply_damage"))
 	player.connect("player_consume_fuel", Callable(self, "consume_energy"))
+	player.connect("player_got_item", Callable(self, "update_cargo_hud"))
 	
 	var exit = Exit.instantiate()
 	add_child(exit)
@@ -229,3 +233,7 @@ func consume_energy():
 			energy_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barfull_v.png")
 		else:
 			energy_bar_bar[i].texture = load("res://HUD/monumento_ui_prototype_barempty_v.png")
+
+func update_cargo_hud():
+	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
+	cargo_label.text = "Cargo: " + str(player.get_current_collected_itens_used_space()) + "/" + str(PlayerStatus.max_storage)
