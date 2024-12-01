@@ -140,7 +140,7 @@ func generate_level():
 	fake_tile_map.set_cells_terrain_connect(0, cells, 0, 0)
 	fake_background_tile_map.set_cells_terrain_connect(0, cells, 0, -1)
 	
-	#walker.queue_free()	
+	#walker.queue_free()
 	
 	for room in walker.rooms:
 		if randf() < 0.25 && room.position != map.front() && room.position != walker.get_end_room().position:

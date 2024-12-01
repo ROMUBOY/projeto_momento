@@ -1,6 +1,6 @@
 extends Node
 
-@onready var audio_players =$AudioStreamPlayers
+@onready var audio_players = $AudioStreamPlayers
 
 const HURT_SOUND = preload("res://SoundPlayer/Sounds/qubodup-BangMid.ogg")
 const DIED_SOUND = preload("res://SoundPlayer/Sounds/MachinePowerOff.ogg")
@@ -13,6 +13,10 @@ func play_sound(sound):
 	for audio_stream_player in audio_players.get_children():
 		if not audio_stream_player.playing:
 			audio_stream_player.stream = sound
+			if sound == HURT_SOUND:
+				audio_stream_player.volume_db = -15
+			else:
+				audio_stream_player.volume_db = 0 
 			audio_stream_player.play()
 			break
 	
