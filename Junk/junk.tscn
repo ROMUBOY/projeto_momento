@@ -12,7 +12,7 @@ texture = ExtResource("1_4ywn1")
 script = ExtResource("2_n2xf3")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_tj6xw")]
-action_name = "colect"
+action_name = "collect"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_f6wr4")

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var label: Label = $Label
+@onready var label: Label = $CanvasLayer/Label
 
 const base_text = "Press [F] to "
 
@@ -20,9 +20,20 @@ func _process(delta: float) -> void:
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
-		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 36
-		label.global_position.x -= label.size.x / 2
+		##label.global_position = active_areas[0].global_position
+		 ## Pega a posição global do nó fora do CanvasLayer
+		#var global_position = active_areas[0].get_global_position()
+		#
+		## Obtém a transformação do CanvasLayer
+		#var canvas_transform = label.get_viewport().get_canvas_transform()
+		#
+		## Converte a posição global para a posição local do CanvasLayer
+		#var local_position = canvas_transform.affine_inverse() * global_position
+		#
+		## Define a posição do nó dentro do CanvasLayer
+		#label.position = local_position
+		#label.global_position.y -= 36
+		#label.global_position.x -= label.size.x / 2
 		label.show()
 	else:
 		label.hide()
