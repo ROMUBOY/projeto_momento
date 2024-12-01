@@ -1285,6 +1285,13 @@ shader_parameter/band_radius = 54.0
 shader_parameter/band_strength = 0.3
 shader_parameter/range_of_light = 64.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7evqx"]
+texture = ExtResource("7_4v4mr")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fa2nv"]
 texture = ExtResource("7_4v4mr")
 texture_margin_left = 3.0
@@ -1298,17 +1305,6 @@ texture_margin_left = 3.0
 texture_margin_top = 7.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7evqx"]
-texture = ExtResource("7_4v4mr")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_e7s3x")
@@ -1413,36 +1409,59 @@ text = "Resume Expedition"
 
 [node name="HUD" type="Control" parent="CanvasLayer_HUD"]
 layout_mode = 3
-anchor_left = 0.7
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
-metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_HUD/HUD"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 10
 size_flags_vertical = 10
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_7evqx")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="CargoLabel" type="Label" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Cargo: 0/10"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1450,85 +1469,85 @@ size_flags_vertical = 4
 texture = ExtResource("7_mt57w")
 stretch_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fa2nv")
 
-[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 2
 
-[node name="HP1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="HP8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
+[node name="HP8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HealthBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 16)
 layout_mode = 2
 texture = ExtResource("8_0n8ga")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/margin_right = 3
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -1536,18 +1555,18 @@ size_flags_vertical = 4
 texture = ExtResource("10_1s76k")
 stretch_mode = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_owt87")
 
-[node name="EnergyBar" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2"]
+[node name="EnergyBar" type="VBoxContainer" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Energy1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy1" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1556,7 +1575,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy2" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1565,7 +1584,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy3" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1574,7 +1593,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy4" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1583,7 +1602,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy5" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1592,7 +1611,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy6" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1601,7 +1620,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy7" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1610,7 +1629,7 @@ size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
 
-[node name="Energy8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
+[node name="Energy8" type="TextureRect" parent="CanvasLayer_HUD/HUD/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer2/EnergyBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 8)
 layout_mode = 2
@@ -1618,21 +1637,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("10_aok5p")
 expand_mode = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer_HUD"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -48.0
-offset_right = 100.0
-offset_bottom = -8.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_7evqx")
-
-[node name="CargoLabel" type="Label" parent="CanvasLayer_HUD/PanelContainer"]
-layout_mode = 2
-text = "Cargo: 0/10"
 
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/HBoxContainer/NewAreaButton" to="." method="_on_new_area_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/HBoxContainer/StoreLoadSceneButton" to="." method="_on_store_load_scene_button_pressed"]

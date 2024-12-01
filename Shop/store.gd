@@ -2,14 +2,14 @@ extends Control
 
 @onready var grid : GridContainer = %GridContainer
 
-@onready var integrity_label: Label = $VBoxContainer/IntegrityLabel
-@onready var storage_label: Label = $VBoxContainer/StorageLabel
-@onready var battery_label: Label = $VBoxContainer/BatteryLabel
-@onready var lighting_label: Label = $VBoxContainer/LightingLabel
-@onready var acceleration_label: Label = $VBoxContainer/AccelerationLabel
-@onready var filter_efficience_label: Label = $VBoxContainer/FilterEfficienceLabel
+@onready var integrity_label: Label = %IntegrityLabel
+@onready var storage_label: Label = %StorageLabel
+@onready var battery_label: Label = %BatteryLabel
+@onready var lighting_label: Label = %LightingLabel
+@onready var acceleration_label: Label = %AccelerationLabel
+@onready var filter_efficience_label: Label = %FilterEfficienceLabel
 
-@onready var cash_label: Label = $CashLabel
+@onready var cash_label: Label = %CashLabel
 
 @export var store_item :PackedScene
 

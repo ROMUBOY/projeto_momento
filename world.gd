@@ -58,7 +58,7 @@ var exit_position : Vector2
 @onready var energy_bar_bar: Array[TextureRect]=[
 	%Energy1, %Energy2, %Energy3, %Energy4, %Energy5, %Energy6, %Energy7, %Energy8
 ]
-@onready var cargo_label: Label = $CanvasLayer_HUD/PanelContainer/CargoLabel
+@onready var cargo_label: Label = %CargoLabel
 
 var current_collected_itens = []
 
