@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1j6161rdxb1b"]
+[gd_scene load_steps=5 format=3 uid="uid://b1j6161rdxb1b"]
 
 [ext_resource type="Texture2D" uid="uid://dc5dcc2nk76ad" path="res://Junk/monumento_sprites_prototype_trash.png" id="1_86n36"]
 [ext_resource type="Script" path="res://Shop/store_item.gd" id="1_hf3ca"]
+[ext_resource type="Theme" uid="uid://d2sb4yfiqdyhj" path="res://Shop/button_theme.tres" id="3_55c67"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_treso"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="StoreItem" type="PanelContainer"]
 offset_right = 40.0
@@ -37,6 +38,7 @@ stretch_mode = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -76,6 +78,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme = ExtResource("3_55c67")
 text = "Buy"
 
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

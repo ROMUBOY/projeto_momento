@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddue4n40fe61t"]
+[gd_scene load_steps=5 format=3 uid="uid://ddue4n40fe61t"]
 
 [ext_resource type="Script" path="res://LevelExit/Exit.gd" id="1_yf7l5"]
 [ext_resource type="PackedScene" uid="uid://b85mci3lcnm8v" path="res://Interaction/Interaction_area/interaction_area.tscn" id="2_3mxpn"]
+[ext_resource type="Texture2D" uid="uid://clbhb7ek22onn" path="res://LevelExit/monumento_icons_exit_prototype.png" id="2_joy8l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lluoj"]
 radius = 20.2237
@@ -9,9 +10,11 @@ radius = 20.2237
 [node name="Exit" type="Node2D"]
 script = ExtResource("1_yf7l5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
+texture = ExtResource("2_joy8l")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_3mxpn")]
 action_name = "exit"

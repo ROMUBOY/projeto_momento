@@ -6,9 +6,9 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojp31"]
 radius = 8.0
-height = 32.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_ewlc8")
 strafe_speed = 500.0
@@ -19,7 +19,7 @@ rotation = 1.57079
 texture = ExtResource("2_i88nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
+position = Vector2(-5, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_ojp31")
 

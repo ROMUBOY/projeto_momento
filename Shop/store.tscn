@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6vbdcm28eoip"]
+[gd_scene load_steps=7 format=3 uid="uid://c6vbdcm28eoip"]
 
 [ext_resource type="Script" path="res://Shop/store.gd" id="1_fit2t"]
 [ext_resource type="PackedScene" uid="uid://b1j6161rdxb1b" path="res://Shop/store_item.tscn" id="2_0aeuk"]
 [ext_resource type="PackedScene" uid="uid://cgm55dupnb22f" path="res://Shop/item.tscn" id="3_dsdjl"]
 [ext_resource type="Texture2D" uid="uid://do4x181mo3sup" path="res://Player/monumento_sprites_prototype_ship2.0.png" id="4_kyq25"]
 [ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="5_516gc"]
+[ext_resource type="Theme" uid="uid://d2sb4yfiqdyhj" path="res://Shop/button_theme.tres" id="6_wpo4n"]
 
 [node name="Store" type="Control" node_paths=PackedStringArray("store_data")]
 layout_mode = 3
@@ -137,5 +138,6 @@ offset_left = 64.0
 offset_top = 256.0
 offset_right = 210.0
 offset_bottom = 287.0
-text = "Explore New Area"
+theme = ExtResource("6_wpo4n")
+text = "Return to the Monument"
 target_level_path = "res://world.tscn"
