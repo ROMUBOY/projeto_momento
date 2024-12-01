@@ -110,12 +110,18 @@ func generate_level():
 	var exit = Exit.instantiate()
 	add_child(exit)
 	#exit.position = walker.get_end_room().position * 32
-	exit.position = walker.rooms[1].position * 32
+	exit.position = player_start_position
 	exit_position = exit.position
 	exit.connect("leaving_level", Callable(self, "reload_level"))
 	
-	#walker.queue_free()
+	var artifact = Artifacts[0].instantiate()
+	add_child(artifact)
+	artifact.position = walker.get_end_room().position * 32
+	
 	var cells = []
+	
+	#walker.queue_free()
+	
 	for location in map:
 		cells.append(location)
 	
@@ -125,20 +131,27 @@ func generate_level():
 	fake_tile_map.set_cells_terrain_connect(0, cells, 0, -1)
 	fake_background_tile_map.set_cells_terrain_connect(0, cells, 0, 0)
 	
+	cells = []
+	
+	for y in range(-walker.get_end_room().size.y/2, walker.get_end_room().size.y/2) :
+		for x in range( -walker.get_end_room().size.x/2, walker.get_end_room().size.x/2):
+			cells.append(Vector2(walker.get_end_room().position.x + x, walker.get_end_room().position.y + y))
+	
+	fake_tile_map.set_cells_terrain_connect(0, cells, 0, 0)
+	fake_background_tile_map.set_cells_terrain_connect(0, cells, 0, -1)
+	
 	#walker.queue_free()	
 	
 	for room in walker.rooms:
-		if randf() < 0.25 && room.position != map.front() && room.position != walker.rooms[1].position:
+		if randf() < 0.25 && room.position != map.front() && room.position != walker.get_end_room().position:
 			
 			var junk : Junk
 			
-			match randi_range(1, 10):
+			match randi_range(1, 9):
 				1,2,3,4,5,6:
 					junk = Debris[randi_range(0, Debris.size() - 1)].instantiate()
 				7,8,9:
 					junk = Relics[randi_range(0, Relics.size() - 1)].instantiate()
-				10:
-					junk = Artifacts[0].instantiate()
 			
 			add_child(junk)
 			
