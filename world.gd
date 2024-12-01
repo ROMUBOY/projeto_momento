@@ -59,6 +59,9 @@ var exit_position : Vector2
 	%Energy1, %Energy2, %Energy3, %Energy4, %Energy5, %Energy6, %Energy7, %Energy8
 ]
 @onready var cargo_label: Label = %CargoLabel
+@onready var pause_canvas_layer: CanvasLayer = $PauseCanvasLayer
+
+var paused = false
 
 var current_collected_itens = []
 
@@ -98,6 +101,9 @@ func _process(delta: float) -> void:
 			fake_tile_map.show()
 			background_tile_map.hide()
 			fake_background_tile_map.show()
+	
+	if Input.is_action_just_pressed("pause"):
+		pause_menu()
 
 func generate_level():
 	var walker = Walker.new(Vector2(19, 11), borders)
@@ -241,3 +247,13 @@ func update_cargo_hud():
 		return
 	var player = get_tree().get_root().get_node("World" +"/"+ "Player")
 	cargo_label.text = "Cargo: " + str(player.get_current_collected_itens_used_space()) + "/" + str(PlayerStatus.max_storage)
+
+func pause_menu():
+	if paused:
+		pause_canvas_layer.hide()
+		Engine.time_scale = 1
+	else:
+		pause_canvas_layer.show()
+		Engine.time_scale = 0
+		
+	paused = !paused

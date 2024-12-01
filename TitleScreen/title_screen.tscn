@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi2uyqxfucyeu"]
+[gd_scene load_steps=8 format=3 uid="uid://bi2uyqxfucyeu"]
 
 [ext_resource type="Script" path="res://TitleScreen/title_screen.gd" id="2_e8st6"]
 [ext_resource type="Texture2D" uid="uid://jlb2s7i4uejl" path="res://TitleScreen/grub_ilus_3.png" id="3_bbumr"]
 [ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="3_wy32p"]
 [ext_resource type="Theme" uid="uid://banvfg58eyhju" path="res://Shop/button_theme.tres" id="3_xxbmf"]
-[ext_resource type="Script" path="res://TitleScreen/volume_silder.gd" id="5_nye13"]
+[ext_resource type="PackedScene" uid="uid://6qmnssb8rctn" path="res://TitleScreen/settings.tscn" id="5_bund1"]
+[ext_resource type="PackedScene" uid="uid://bgc5vrslysoqn" path="res://TitleScreen/how_to_play.tscn" id="6_3b672"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rrd0"]
 bg_color = Color(0, 0, 0, 1)
@@ -103,71 +104,8 @@ size_flags_vertical = 10
 theme = ExtResource("3_xxbmf")
 text = "CREDITS"
 
-[node name="Settings" type="MarginContainer" parent="PanelContainer"]
-visible = false
+[node name="Settings" parent="PanelContainer" instance=ExtResource("5_bund1")]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Settings"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="PanelContainer/Settings/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 62
-text = "MONUMENT"
-
-[node name="Label2" type="Label" parent="PanelContainer/Settings/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "SETTINGS"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Settings/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "MUSIC VOLUME"
-
-[node name="HSlider" type="HSlider" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("5_nye13")
-bus_name = "Music"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "SFX VOLUME"
-
-[node name="HSlider" type="HSlider" parent="PanelContainer/Settings/VBoxContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("5_nye13")
-bus_name = "Sfx"
-
-[node name="SettingsBack" type="Button" parent="PanelContainer/Settings/VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme = ExtResource("3_xxbmf")
-text = "BACK"
 
 [node name="Credits" type="MarginContainer" parent="PanelContainer"]
 visible = false
@@ -224,64 +162,11 @@ size_flags_vertical = 10
 theme = ExtResource("3_xxbmf")
 text = "BACK"
 
-[node name="How to Play" type="MarginContainer" parent="PanelContainer"]
-visible = false
+[node name="How to Play" parent="PanelContainer" instance=ExtResource("6_3b672")]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/How to Play"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="PanelContainer/How to Play/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 62
-text = "MONUMENT"
-
-[node name="Label2" type="Label" parent="PanelContainer/How to Play/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "HOW TO PLAY"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/How to Play/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 15
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/How to Play/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "Aaa"
-
-[node name="Next" type="Button" parent="PanelContainer/How to Play/VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme = ExtResource("3_xxbmf")
-text = "NEXT"
-
-[node name="HowToPlayBack" type="Button" parent="PanelContainer/How to Play/VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme = ExtResource("3_xxbmf")
-text = "BACK"
 
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PanelContainer/Main Menu/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="PanelContainer/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
 [connection signal="pressed" from="PanelContainer/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]
-[connection signal="pressed" from="PanelContainer/How to Play/VBoxContainer/HowToPlayBack" to="." method="_on_how_to_play_back_pressed"]

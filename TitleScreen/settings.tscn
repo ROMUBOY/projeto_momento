@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://6qmnssb8rctn"]
+
+[ext_resource type="Script" path="res://TitleScreen/volume_silder.gd" id="1_vst5u"]
+[ext_resource type="Theme" uid="uid://banvfg58eyhju" path="res://Shop/button_theme.tres" id="2_377qk"]
+
+[node name="Settings" type="MarginContainer"]
+visible = false
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 62
+text = "MONUMENT"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MUSIC VOLUME"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_vst5u")
+bus_name = "Music"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "SFX VOLUME"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_vst5u")
+bus_name = "Sfx"
+
+[node name="SettingsBack" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme = ExtResource("2_377qk")
+text = "BACK"
