@@ -14,7 +14,7 @@ var collected_itens = []
 var current_collected_itens_used_space = 0
 
 var fuel: float = PlayerStatus.max_fuel  # Combustível inicial
-var fuel_burn_rate: float = 3.0  # Taxa de consumo por segundo
+var fuel_burn_rate: float = 1.0  # Taxa de consumo por segundo
 @export var current_filter = 0
 var filter_burn_rate_multiplier = 1 + 1 / PlayerStatus.filter_efficiency
 
@@ -75,7 +75,7 @@ func process_strafe(delta):
 		velocity += Vector2.DOWN.rotated(rotation) * strafe_speed * delta
 
 func burn_fuel(delta):
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down") || Input.is_action_pressed("strafe_left") || Input.is_action_pressed("strafe_right"):
 		fuel -= fuel_burn_rate * delta * ( filter_burn_rate_multiplier if (current_filter != 0) else 1)
 		emit_signal("player_consume_fuel")
 		fuel = max(fuel, 0)
