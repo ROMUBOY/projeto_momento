@@ -1,6 +1,6 @@
 extends Control
 
-@onready var grid_container: GridContainer = $GridContainer
+@onready var grid_container: GridContainer =$MarginContainer2/GridContainer 
 @export var item_collected :PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

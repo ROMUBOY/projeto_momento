@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt83d5peosj5a"]
 
 [ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="1_u806r"]
-[ext_resource type="Theme" uid="uid://d2sb4yfiqdyhj" path="res://Shop/button_theme.tres" id="2_7rxhr"]
+[ext_resource type="Theme" uid="uid://banvfg58eyhju" path="res://Shop/button_theme.tres" id="2_7rxhr"]
 
 [node name="DiedScreen" type="Control"]
 layout_mode = 3

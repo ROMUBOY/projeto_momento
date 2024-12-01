@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Shop/itens_collected.gd" id="1_16yp4"]
 [ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="2_51rlf"]
 [ext_resource type="PackedScene" uid="uid://6iilaq72mfhr" path="res://Shop/item_collected.tscn" id="2_iv4vb"]
-[ext_resource type="Theme" uid="uid://d2sb4yfiqdyhj" path="res://Shop/button_theme.tres" id="4_3m3gk"]
+[ext_resource type="Theme" uid="uid://banvfg58eyhju" path="res://Shop/button_theme.tres" id="4_3m3gk"]
 
 [node name="ItensCollected" type="Control"]
 layout_mode = 3

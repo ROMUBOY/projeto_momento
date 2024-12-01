@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="7_coq6k"]
 [ext_resource type="Texture2D" uid="uid://db4ukrg6pacyp" path="res://HUD/monumento_icons_health_prototype.png" id="7_mt57w"]
 [ext_resource type="Texture2D" uid="uid://bnrt2308hhkiw" path="res://HUD/monumento_ui_prototype_barfull_v.png" id="8_0n8ga"]
-[ext_resource type="Theme" uid="uid://d2sb4yfiqdyhj" path="res://Shop/button_theme.tres" id="8_hknny"]
+[ext_resource type="Theme" uid="uid://banvfg58eyhju" path="res://Shop/button_theme.tres" id="8_hknny"]
 [ext_resource type="Texture2D" uid="uid://dgwe4ftxwano1" path="res://HUD/monumento_ui_energy_prototype.png" id="9_wffaq"]
 [ext_resource type="Texture2D" uid="uid://tsb6o44fusnm" path="res://HUD/monumento_icons_energy_prototype.png" id="10_1s76k"]
 [ext_resource type="Texture2D" uid="uid://bndpt04bf06v4" path="res://HUD/monumento_ui_prototype_barfull_h.png" id="10_aok5p"]

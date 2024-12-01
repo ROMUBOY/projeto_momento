@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgm55dupnb22f" path="res://Shop/item.tscn" id="3_dsdjl"]
 [ext_resource type="Texture2D" uid="uid://do4x181mo3sup" path="res://Player/monumento_sprites_prototype_ship2.0.png" id="4_kyq25"]
 [ext_resource type="PackedScene" uid="uid://d2haymps3cf4r" path="res://SceneLoading/load_scene_button.tscn" id="5_516gc"]
-[ext_resource type="Theme" uid="uid://d2sb4yfiqdyhj" path="res://Shop/button_theme.tres" id="6_wpo4n"]
+[ext_resource type="Theme" uid="uid://banvfg58eyhju" path="res://Shop/button_theme.tres" id="6_wpo4n"]
 
 [node name="Store" type="Control" node_paths=PackedStringArray("store_data")]
 layout_mode = 3
