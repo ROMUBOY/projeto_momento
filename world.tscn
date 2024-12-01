@@ -1653,7 +1653,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -350.0
+offset_left = -352.0
+offset_top = -80.0
+offset_right = -2.0
+offset_bottom = 11.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_un0yh")
@@ -1712,6 +1715,11 @@ layout_mode = 2
 
 [node name="How to Play" parent="PauseCanvasLayer/PanelContainer" instance=ExtResource("16_oge3q")]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PauseCanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(7.16, 9.24)
 
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/HBoxContainer/NewAreaButton" to="." method="_on_new_area_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/StoreScreen/HBoxContainer/StoreLoadSceneButton" to="." method="_on_store_load_scene_button_pressed"]
