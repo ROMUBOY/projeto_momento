@@ -1282,7 +1282,7 @@ sources/0 = SubResource("TileSetAtlasSource_7ljj4")
 shader = ExtResource("5_fllqx")
 shader_parameter/modulate_color = Color(0, 0, 0, 1)
 shader_parameter/black_point = Color(0, 0, 0, 0)
-shader_parameter/lights = null
+shader_parameter/lights = PackedVector2Array()
 shader_parameter/number_of_lights = 1
 shader_parameter/band_radius = 54.0
 shader_parameter/band_strength = 0.3
@@ -1342,21 +1342,11 @@ layer_0/tile_data = PackedInt32Array(-131113, 65536, 1, -196649, 65536, 1, -2621
 
 [node name="Lighting" type="ColorRect" parent="DarknessCanvasLayer"]
 material = SubResource("ShaderMaterial_x8r1n")
-custom_minimum_size = Vector2(640, 320)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -188.0
-offset_right = 320.0
-offset_bottom = 132.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 1.16)
-size_flags_horizontal = 4
-size_flags_vertical = 4
 script = ExtResource("6_nuwgd")
 
 [node name="CanvasLayer_HUD" type="CanvasLayer" parent="."]
